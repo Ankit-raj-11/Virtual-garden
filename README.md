@@ -1,6 +1,5 @@
 # Virtual-garden
 
-<h3Team Members :<h3><br>
 Ankit Raj Chandravanshi<br>
 Debjyoti Biswas<br>
 Nikhil Chourasia<br>
