@@ -5,3 +5,4 @@ Debjyoti Biswas<br>
 Nikhil Chourasia<br>
 Kritika Singh<br>
 Aryan Kumar Pandey
+Rishika Bhawsingka
