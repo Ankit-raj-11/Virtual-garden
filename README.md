@@ -2,5 +2,5 @@
 
 Ankit Raj Chandravanshi<br>
 Debjyoti Biswas<br>
-Nikhil Chourasia
+Nikhil Chourasia<br>
 Kritika Singh
