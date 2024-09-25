@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Model Viewer</title>
+    <style>
+        body { margin: 0; }
+        #model-container { width: 100vw; height: 100vh; display: block; }
+    </style>
+</head>
+<body>
+
+    <!-- Container for the 3D model -->
+    <div id="model-container">
+        <model-viewer src="path-to-your-model.glb" auto-rotate camera-controls alt="cube" background-color="#455A64"></model-viewer>
+    </div>
+
+    <!-- Include Three.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Include GLTFLoader for loading .glb files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/examples/js/loaders/GLTFLoader.js"></script>
+
+    <script>
+        // Scene setup
+        var scene = new THREE.Scene();
+        var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        var renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('model-container').appendChild(renderer.domElement);
+
+        // Lighting
+        var light = new THREE.DirectionalLight(0xffffff, 1);
+        light.position.set(1, 1, 1).normalize();
+        scene.add(light);
+
+        // Load the GLB model
+        var loader = new THREE.GLTFLoader();
+        loader.load('path-to-your-model.glb', function(gltf) {
+            scene.add(gltf.scene);
+            gltf.scene.scale.set(0.5, 0.5, 0.5);  // Scale the model (optional)
+            renderer.render(scene, camera);
+        });
+
+        // Set camera position
+        camera.position.z = 5;
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Adjust the scene on window resize
+        window.addEventListener('resize', function() {
+            var width = window.innerWidth;
+            var height = window.innerHeight;
+            renderer.setSize(width, height);
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+        });
+    </script>
+
+</body>
+</html>
